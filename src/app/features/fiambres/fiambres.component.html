@@ -1,0 +1,12 @@
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+  <div class="mb-16 text-right">
+    <h2 class="text-5xl font-serif mb-4">Fiambres</h2>
+    <p class="text-brand-text/70 text-lg">Una amplia variedad de productos, con calidades y precios que varían de acuerdo a la necesidad del cliente.</p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    @for (producto of productos(); track producto.id) {
+      <app-producto-card [producto]="producto" (consultar)="onConsultar($event)"></app-producto-card>
+    }
+  </div>
+</section>

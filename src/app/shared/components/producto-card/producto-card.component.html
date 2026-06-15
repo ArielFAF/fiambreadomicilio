@@ -1,0 +1,50 @@
+<div class="relative aspect-[4/3] overflow-hidden">
+  <img 
+    [src]="producto().imagen" 
+    [alt]="producto().nombre"
+    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+    referrerpolicy="no-referrer"
+  />
+  @if (producto().destacado) {
+    <div class="absolute top-4 right-4 bg-brand-secondary text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+      RECOMENDADO
+    </div>
+  }
+</div>
+
+<div class="p-6">
+  <div class="flex justify-between items-start mb-2">
+    <h3 class="text-xl font-bold tracking-tight">{{ producto().nombre }}</h3>
+    <span class="text-xs font-bold uppercase tracking-wider text-brand-secondary/70 bg-brand-secondary/10 px-2 py-0.5 rounded">
+      {{ producto().categoria }}
+    </span>
+  </div>
+  
+  <p class="text-sm text-brand-text/70 mb-6 line-clamp-2 h-10">
+    {{ producto().descripcion }}
+  </p>
+  
+  <div class="flex items-center justify-between mt-auto">
+    <!-- <span class="text-lg font-bold text-brand-secondary">
+      {{ producto().precio | precioArs }}
+    </span> -->
+    
+    <!-- <button 
+      (click)="onConsultar()"
+      class="flex items-center justify-center bg-brand-primary hover:bg-brand-secondary hover:text-white text-brand-text font-bold py-2 px-4 rounded-xl transition-all duration-300"
+    >
+      <i class="material-icons text-sm mr-2">shopping_basket</i>
+      Consultar
+    </button> -->
+
+    <a href="https://wa.me/5492645103684?text=Hola! Quiero consultar sobre el producto: {{ producto().nombre }}" target="_blank" rel="noopener noreferrer" >
+      <button 
+      class="flex items-center justify-center bg-brand-primary hover:bg-brand-secondary hover:text-white text-brand-text font-bold py-2 px-4 rounded-xl transition-all duration-300"
+    >
+      <i class="material-icons text-sm mr-2">shopping_basket</i>
+      Consultar
+    </button>
+    </a>
+
+  </div>
+</div>

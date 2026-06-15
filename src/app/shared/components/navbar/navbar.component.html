@@ -1,0 +1,67 @@
+<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="flex justify-between h-20 items-center">
+    <!-- Logo -->
+    <div class="flex-shrink-0 flex items-center">
+      <a routerLink="/" class="text-2xl font-serif font-bold text-brand-primary tracking-tight">
+        Fiambre <span class="text-white">a Domicilio</span>
+      </a>
+    </div>
+
+    <!-- Search Input -->
+    <div class="hidden lg:flex flex-1 max-w-sm ml-8 items-center relative">
+      <input 
+        type="text" 
+        [(ngModel)]="searchTerm"
+        (keyup.enter)="onSearch()"
+        placeholder="¿Qué buscás hoy?"
+        aria-label="Buscar productos"
+        class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-2 pl-10 focus:bg-white/20 focus:outline-none transition-all placeholder:text-white/50 text-sm"
+      >
+      <i class="material-icons absolute left-3 text-white/50 text-lg">search</i>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex space-x-8">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="hover:text-brand-primary transition-colors py-2">Inicio</a>
+      <a routerLink="/quienes-somos" routerLinkActive="active" class="hover:text-brand-primary transition-colors py-2">Quiénes Somos</a>
+      <a routerLink="/quesos" routerLinkActive="active" class="hover:text-brand-primary transition-colors py-2">Quesos</a>
+      <a routerLink="/fiambres" routerLinkActive="active" class="hover:text-brand-primary transition-colors py-2">Fiambre</a>
+      <a routerLink="/otras-variedades" routerLinkActive="active" class="hover:text-brand-primary transition-colors py-2">Otras Variedades</a>
+      <a routerLink="/formas-de-pago" routerLinkActive="active" class="hover:text-brand-primary transition-colors py-2">Pagos</a>
+      <a routerLink="/contacto" routerLinkActive="active" class="hover:text-brand-primary transition-colors py-2">Contacto</a>
+    </div>
+
+    <!-- Mobile menu button -->
+    <div class="md:hidden flex items-center">
+      <button (click)="toggleMenu()" class="text-white hover:text-brand-primary focus:outline-none transition-colors">
+        <span class="material-icons text-3xl">
+          {{ menuAbierto() ? 'close' : 'menu' }}
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  @if (menuAbierto()) {
+    <div class="md:hidden pb-6 space-y-2 border-t border-white/10 pt-4">
+      <div class="px-3 mb-4 relative">
+        <input 
+          type="text" 
+          [(ngModel)]="searchTerm"
+          (keyup.enter)="onSearch()"
+          placeholder="Buscar productos..."
+          aria-label="Buscar productos"
+          class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 pl-10 focus:bg-white/20 focus:outline-none transition-all placeholder:text-white/50 text-sm"
+        >
+        <i class="material-icons absolute left-6 top-3 text-white/50 text-xl">search</i>
+      </div>
+      <a routerLink="/" (click)="cerrarMenu()" class="block px-3 py-2 rounded-md hover:bg-brand-primary/10">Inicio</a>
+      <a routerLink="/quienes-somos" (click)="cerrarMenu()" class="block px-3 py-2 rounded-md hover:bg-brand-primary/10">Quiénes Somos</a>
+      <a routerLink="/quesos" (click)="cerrarMenu()" class="block px-3 py-2 rounded-md hover:bg-brand-primary/10">Quesos</a>
+      <a routerLink="/fiambres" (click)="cerrarMenu()" class="block px-3 py-2 rounded-md hover:bg-brand-primary/10">Fiambre</a>
+      <a routerLink="/otras-variedades" (click)="cerrarMenu()" class="block px-3 py-2 rounded-md hover:bg-brand-primary/10">Otras Variedades</a>
+      <a routerLink="/formas-de-pago" (click)="cerrarMenu()" class="block px-3 py-2 rounded-md hover:bg-brand-primary/10">Pagos</a>
+      <a routerLink="/contacto" (click)="cerrarMenu()" class="block px-3 py-2 rounded-md hover:bg-brand-primary/10">Contacto</a>
+    </div>
+  }
+</nav>
